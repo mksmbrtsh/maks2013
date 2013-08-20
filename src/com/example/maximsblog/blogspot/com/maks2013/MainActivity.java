@@ -1,20 +1,49 @@
 package com.example.maximsblog.blogspot.com.maks2013;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import com.viewpagerindicator.TabPageIndicator;
+import com.example.maximsblog.blogspot.com.maks2013.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
+    private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.simple_tabs);
+
+        FragmentPagerAdapter adapter = new GoogleMusicAdapter(getSupportFragmentManager());
+
+        ViewPager pager = (ViewPager)findViewById(R.id.pager);
+        pager.setAdapter(adapter);
+
+        TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
+        indicator.setViewPager(pager);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
+    class GoogleMusicAdapter extends FragmentPagerAdapter {
+        public GoogleMusicAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return CONTENT[position % CONTENT.length].toUpperCase();
+        }
+
+        @Override
+        public int getCount() {
+          return CONTENT.length;
+        }
     }
 }
