@@ -1,4 +1,4 @@
-package com.example.maximsblog.blogspot.com.maks2013;
+package com.maximsblog.blogspot.com.maks2013;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import com.viewpagerindicator.TabPageIndicator;
-import com.example.maximsblog.blogspot.com.maks2013.R;
+import com.maximsblog.blogspot.com.maks2013.R;
 
 public class MainActivity extends FragmentActivity {
     private String[] mTitlesPage;

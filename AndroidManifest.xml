@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.maximsblog.blogspot.com.maks2013"
+    package="com.maximsblog.blogspot.com.maks2013"
     android:versionCode="65"
     android:versionName="2.4.1">
 

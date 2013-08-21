@@ -1,4 +1,4 @@
-package com.example.maximsblog.blogspot.com.maks2013;
+package com.maximsblog.blogspot.com.maks2013;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
