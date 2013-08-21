@@ -1,8 +1,9 @@
 <resources>
 
-    <string name="app_name">maks2013</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-
-</resources>
+    <string name="app_name">МАКС 2013</string>
+    <string name="menu_settings">Настройки</string>
+	<string-array name="titles">
+		<item >Схема экспозиции</item>
+		<item >Электронный каталог</item>
+	</string-array>
+	</resources>

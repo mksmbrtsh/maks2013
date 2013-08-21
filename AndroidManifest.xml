@@ -10,7 +10,7 @@
 
     <application
         android:label="ViewPagerIndicator Sample"
-        android:icon="@drawable/icon">
+        android:icon="@drawable/ic_launcher">
 
         <!-- TAB INDICATOR -->
         <activity

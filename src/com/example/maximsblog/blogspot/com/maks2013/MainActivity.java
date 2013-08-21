@@ -10,14 +10,15 @@ import com.viewpagerindicator.TabPageIndicator;
 import com.example.maximsblog.blogspot.com.maks2013.R;
 
 public class MainActivity extends FragmentActivity {
-    private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
+    private String[] mTitlesPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_tabs);
-
-        FragmentPagerAdapter adapter = new GoogleMusicAdapter(getSupportFragmentManager());
+        setContentView(R.layout.main_activity);
+        mTitlesPage = getResources().getStringArray(R.array.titles);
+        
+        FragmentPagerAdapter adapter = new ItemPageAdapter(getSupportFragmentManager());
 
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
@@ -26,24 +27,24 @@ public class MainActivity extends FragmentActivity {
         indicator.setViewPager(pager);
     }
 
-    class GoogleMusicAdapter extends FragmentPagerAdapter {
-        public GoogleMusicAdapter(FragmentManager fm) {
+    class ItemPageAdapter extends FragmentPagerAdapter {
+        public ItemPageAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+            return TestFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return CONTENT[position % CONTENT.length].toUpperCase();
+            return mTitlesPage[position % mTitlesPage.length].toUpperCase();
         }
 
         @Override
         public int getCount() {
-          return CONTENT.length;
+          return mTitlesPage.length;
         }
     }
 }
