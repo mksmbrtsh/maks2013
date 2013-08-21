@@ -1,5 +1,6 @@
 package com.maximsblog.blogspot.com.maks2013;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +12,7 @@ import com.maximsblog.blogspot.com.maks2013.R;
 
 public class MainActivity extends FragmentActivity {
     private String[] mTitlesPage;
+	private Cursor  employees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class MainActivity extends FragmentActivity {
 
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
+        
+        OpenDBHelper dbh = new OpenDBHelper(this);
+        employees = dbh.getEmployees(); // you would not typically call this on the main thread
     }
 
     class ItemPageAdapter extends FragmentPagerAdapter {
