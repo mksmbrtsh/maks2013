@@ -12,7 +12,7 @@ import com.maximsblog.blogspot.com.maks2013.R;
 
 public class MainActivity extends FragmentActivity {
     private String[] mTitlesPage;
-	private Cursor  employees;
+    public Cursor employees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

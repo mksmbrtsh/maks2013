@@ -1,13 +1,17 @@
 package com.maximsblog.blogspot.com.maks2013;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public final class TestFragment extends Fragment {
@@ -27,11 +31,11 @@ public final class TestFragment extends Fragment {
     }
 
     private String mContent = "???";
-
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
             mContent = savedInstanceState.getString(KEY_CONTENT);
         }
@@ -39,17 +43,25 @@ public final class TestFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        TextView text = new TextView(getActivity());
-        text.setGravity(Gravity.CENTER);
-        text.setText(mContent);
-        text.setTextSize(20 * getResources().getDisplayMetrics().density);
+        ListView text = new ListView(getActivity());
+        //text.setGravity(Gravity.CENTER);
+        //text.setText(mContent);
+        //text.setTextSize(20 * getResources().getDisplayMetrics().density);
         text.setPadding(20, 20, 20, 20);
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         layout.setGravity(Gravity.CENTER);
         layout.addView(text);
-
+        
+        Cursor employees = ((MainActivity)getActivity()).employees;
+        
+        ListAdapter adapter = new SimpleCursorAdapter(getActivity(), 
+				android.R.layout.simple_list_item_1, 
+				employees, 
+				new String[] {"FirstName"}, 
+				new int[] {android.R.id.text1});
+        text.setAdapter(adapter);
         return layout;
     }
 
