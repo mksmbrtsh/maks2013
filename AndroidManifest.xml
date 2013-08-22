@@ -9,7 +9,7 @@
         android:targetSdkVersion="16" />
 
     <application
-        android:label="ViewPagerIndicator Sample"
+        android:label="MAKS2013"
         android:icon="@drawable/ic_launcher">
 
         <!-- TAB INDICATOR -->

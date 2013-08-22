@@ -37,7 +37,7 @@ public class OpenDBHelper extends SQLiteAssetHelper {
 		SQLiteDatabase db = getReadableDatabase();
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-		String [] sqlSelect = {"name", "note"}; 
+		String [] sqlSelect = {"0 _id", "name", "note"}; 
 		String sqlTables = "catalog";
 
 		qb.setTables(sqlTables);
