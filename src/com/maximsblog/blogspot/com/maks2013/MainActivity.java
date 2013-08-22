@@ -39,12 +39,15 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return TestFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	if(position == 0)
+        		return SchemFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	else
+        		return CatalogFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mTitlesPage[position % mTitlesPage.length].toUpperCase();
+            return mTitlesPage[position % mTitlesPage.length];
         }
 
         @Override
