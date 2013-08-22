@@ -18,7 +18,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class OpenDBHelper extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "northwind";
+	private static final String DATABASE_NAME = "catalog";
 	private static final int DATABASE_VERSION = 1;
 
 	public OpenDBHelper(Context context) {
@@ -37,8 +37,8 @@ public class OpenDBHelper extends SQLiteAssetHelper {
 		SQLiteDatabase db = getReadableDatabase();
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-		String [] sqlSelect = {"0 _id", "FirstName", "LastName"}; 
-		String sqlTables = "Employees";
+		String [] sqlSelect = {"name", "note"}; 
+		String sqlTables = "catalog";
 
 		qb.setTables(sqlTables);
 		Cursor c = qb.query(db, sqlSelect, null, null,

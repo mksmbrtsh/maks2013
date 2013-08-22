@@ -59,7 +59,7 @@ public final class TestFragment extends Fragment {
         ListAdapter adapter = new SimpleCursorAdapter(getActivity(), 
 				android.R.layout.simple_list_item_1, 
 				employees, 
-				new String[] {"FirstName"}, 
+				new String[] {"name"}, 
 				new int[] {android.R.id.text1});
         text.setAdapter(adapter);
         return layout;
