@@ -8,8 +8,9 @@
         android:id="@+id/schema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
+        android:scaleType="matrix"
+        android:src="@drawable/skhema_ekspozicii"
         android:scrollbars="horizontal|vertical"
-        android:src="@drawable/skhema_ekspozicii" />
+        android:background="@android:color/white" />
 
 </LinearLayout>
