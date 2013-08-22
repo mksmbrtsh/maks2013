@@ -20,6 +20,12 @@ public class OpenDBHelper extends SQLiteAssetHelper {
 
 	private static final String DATABASE_NAME = "catalog";
 	private static final int DATABASE_VERSION = 1;
+	
+	
+	public static final int NAME = 1;
+	public static final int NOTE = 2;
+	public static final int P = 3;
+	public static final int Z = 4;
 
 	public OpenDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -6,4 +6,8 @@
 		<item >Схема экспозиции</item>
 		<item >Электронный каталог</item>
 	</string-array>
+	<string name="name">Наименование:</string>
+	<string name="note">Краткое описание:</string>
+	<string name="p">Павильон:</string>
+	<string name="z">Зал:</string>
 	</resources>
