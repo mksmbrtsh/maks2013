@@ -1,5 +1,6 @@
 package com.maximsblog.blogspot.com.maks2013;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,8 +8,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
 import com.viewpagerindicator.TabPageIndicator;
 import com.maximsblog.blogspot.com.maks2013.R;
+import android.view.MotionEvent;
 
 public class MainActivity extends FragmentActivity {
     private String[] mTitlesPage;
@@ -22,15 +28,17 @@ public class MainActivity extends FragmentActivity {
         
         FragmentPagerAdapter adapter = new ItemPageAdapter(getSupportFragmentManager());
 
-        ViewPager pager = (ViewPager)findViewById(R.id.pager);
+        NonSwipeableViewPager pager = (NonSwipeableViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
-
+       
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         
         OpenDBHelper dbh = new OpenDBHelper(this);
         employees = dbh.getEmployees(); // you would not typically call this on the main thread
     }
+    
+    
 
     class ItemPageAdapter extends FragmentPagerAdapter {
         public ItemPageAdapter(FragmentManager fm) {

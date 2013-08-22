@@ -36,23 +36,17 @@ public final class CatalogFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
-            mContent = savedInstanceState.getString(KEY_CONTENT);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ListView text = new ListView(getActivity());
-        //text.setGravity(Gravity.CENTER);
-        //text.setText(mContent);
-        //text.setTextSize(20 * getResources().getDisplayMetrics().density);
-        text.setPadding(20, 20, 20, 20);
+        ListView list = new ListView(getActivity());
+        list.setPadding(20, 20, 20, 20);
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         layout.setGravity(Gravity.CENTER);
-        layout.addView(text);
+        layout.addView(list);
         
         Cursor employees = ((MainActivity)getActivity()).employees;
         
@@ -61,7 +55,7 @@ public final class CatalogFragment extends Fragment {
 				employees, 
 				new String[] {"name"}, 
 				new int[] {android.R.id.text1});
-        text.setAdapter(adapter);
+        list.setAdapter(adapter);
         return layout;
     }
 
