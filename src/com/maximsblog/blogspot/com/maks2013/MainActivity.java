@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 public class MainActivity extends FragmentActivity {
     private String[] mTitlesPage;
     public Cursor employees;
+	public OpenDBHelper mDBh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,8 @@ public class MainActivity extends FragmentActivity {
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         
-        OpenDBHelper dbh = new OpenDBHelper(this);
-        employees = dbh.getEmployees(); // you would not typically call this on the main thread
+        mDBh = new OpenDBHelper(this);
+        employees = mDBh.getEmployees(); 
     }
     
     
@@ -49,8 +50,15 @@ public class MainActivity extends FragmentActivity {
         public Fragment getItem(int position) {
         	if(position == 0)
         		return SchemFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	else
+        	else if(position == 1)
         		return CatalogFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	else if(position == 2)
+        		return DpFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	else if(position == 3)
+        		return LpFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	else if(position == 4)
+        		return AboutFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
+        	return null;
         }
 
         @Override

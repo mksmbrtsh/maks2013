@@ -18,7 +18,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class OpenDBHelper extends SQLiteAssetHelper {
 
-	private static final String DATABASE_NAME = "catalog";
+	public static final String DATABASE_NAME = "catalog";
 	private static final int DATABASE_VERSION = 1;
 	
 	
