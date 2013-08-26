@@ -58,5 +58,6 @@
 Приглашаем Вас принять активное участие в мероприятиях Деловой программы Международного авиационно-космического салона МАКС-2013, в обсуждении широкого круга вопросов, связанных с использованием последних достижений науки, техники и технологии в авиастроении.\n</string>
 <string name="lp_label">Перейти на сайт</string>
 <string name="about">О программе</string>
+<string name="admob_publisher_id"></string>
 <string name="about_text">Программа разработана специально к авиасалону МАКС-2013 для навигации на нем, не является официальным приложением. \n\nРазработчик: <a href="mailto:mksmbtrsh@gmail.com">Maksim Bartosh</a> (<a href="https://play.google.com/store/search?q=maksim+bartosh&amp;c=apps">мои приложения на GooglePlay</a>)\n\nПриложение использует лицензию GPLver2\n<a href="https://github.com/mksmbrtsh/maks2013/">исходный код размещен на github.com</a></string>
 </resources>

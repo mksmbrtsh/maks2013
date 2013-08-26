@@ -16,10 +16,32 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+<LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0" >
+            
+        <com.google.ads.AdView
+     android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/admob_publisher_id"
+            ads:loadAdOnCreate="true"
+            
+            ads:testDevices = "CF95DC53F383F9A836FD749F3EF439CD" 
+            >
 
+           
+
+        </com.google.ads.AdView>
+        </LinearLayout>
     <com.viewpagerindicator.TabPageIndicator
         android:id="@+id/indicator"
         android:layout_height="wrap_content"

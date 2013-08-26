@@ -1,6 +1,9 @@
 package com.maximsblog.blogspot.com.maks2013;
 
+import java.util.Locale;
+
 import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,8 +37,12 @@ public class MainActivity extends FragmentActivity {
        
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
-        
-        mDBh = new OpenDBHelper(this);
+        Configuration sysConfig = getResources().getConfiguration();
+        Locale curLocale = sysConfig.locale;
+		if(curLocale.getDisplayLanguage().contains("русский"))
+			mDBh = new OpenDBHelper(this);
+		else
+			mDBh = new OpenDBHelper(this, true);
         employees = mDBh.getEmployees(); 
     }
     
