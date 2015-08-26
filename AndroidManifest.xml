@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     
     <application
-        android:label="MAKS2013"
+        android:label="MAKS2015"
         android:icon="@drawable/ic_launcher">
 
         <!-- TAB INDICATOR -->
@@ -24,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity android:name="InfoFragment$infoActivity"></activity>
         <meta-data
             android:name="com.google.android.gms.version"

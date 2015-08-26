@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 import com.viewpagerindicator.TabPageIndicator;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.maximsblog.blogspot.com.maks2013.R;
 
@@ -45,6 +46,9 @@ public class MainActivity extends FragmentActivity {
 		mDBh = new OpenDBHelper(this);
 		employees = mDBh.getEmployees();
 		adView = (AdView) findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder()
+		.addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+		adView.loadAd(adRequest);
 	}
 
 	class ItemPageAdapter extends FragmentPagerAdapter {
