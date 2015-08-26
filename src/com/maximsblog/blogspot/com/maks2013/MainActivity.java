@@ -16,66 +16,82 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 import com.viewpagerindicator.TabPageIndicator;
+import com.google.android.gms.ads.AdView;
 import com.maximsblog.blogspot.com.maks2013.R;
+
 import android.view.MotionEvent;
 
 public class MainActivity extends FragmentActivity {
-    private String[] mTitlesPage;
-    public Cursor employees;
+	private String[] mTitlesPage;
+	public Cursor employees;
 	public OpenDBHelper mDBh;
+	private AdView adView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        mTitlesPage = getResources().getStringArray(R.array.titles);
-        
-        FragmentPagerAdapter adapter = new ItemPageAdapter(getSupportFragmentManager());
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main_activity);
+		mTitlesPage = getResources().getStringArray(R.array.titles);
 
-        NonSwipeableViewPager pager = (NonSwipeableViewPager)findViewById(R.id.pager);
-        pager.setAdapter(adapter);
-       
-        TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
-        indicator.setViewPager(pager);
-        Configuration sysConfig = getResources().getConfiguration();
-        Locale curLocale = sysConfig.locale;
-		if(curLocale.getDisplayLanguage().contains("русский"))
-			mDBh = new OpenDBHelper(this);
-		else
-			mDBh = new OpenDBHelper(this, true);
-        employees = mDBh.getEmployees(); 
-    }
-    
-    
+		FragmentPagerAdapter adapter = new ItemPageAdapter(
+				getSupportFragmentManager());
 
-    class ItemPageAdapter extends FragmentPagerAdapter {
-        public ItemPageAdapter(FragmentManager fm) {
-            super(fm);
-        }
+		NonSwipeableViewPager pager = (NonSwipeableViewPager) findViewById(R.id.pager);
+		pager.setAdapter(adapter);
 
-        @Override
-        public Fragment getItem(int position) {
-        	if(position == 0)
-        		return SchemFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	else if(position == 1)
-        		return CatalogFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	else if(position == 2)
-        		return DpFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	else if(position == 3)
-        		return LpFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	else if(position == 4)
-        		return AboutFragment.newInstance(mTitlesPage[position % mTitlesPage.length]);
-        	return null;
-        }
+		TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
+		indicator.setViewPager(pager);
+		Configuration sysConfig = getResources().getConfiguration();
+		mDBh = new OpenDBHelper(this);
+		employees = mDBh.getEmployees();
+		adView = (AdView) findViewById(R.id.adView);
+	}
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitlesPage[position % mTitlesPage.length];
-        }
+	class ItemPageAdapter extends FragmentPagerAdapter {
+		public ItemPageAdapter(FragmentManager fm) {
+			super(fm);
+		}
 
-        @Override
-        public int getCount() {
-          return mTitlesPage.length;
-        }
-    }
+		@Override
+		public Fragment getItem(int position) {
+			if (position == 0)
+				return SchemFragment.newInstance(mTitlesPage[position
+						% mTitlesPage.length]);
+			else if (position == 1)
+				return CatalogFragment.newInstance(mTitlesPage[position
+						% mTitlesPage.length]);
+			else if (position == 2)
+				return DpFragment.newInstance(mTitlesPage[position
+						% mTitlesPage.length]);
+			else if (position == 3)
+				return LpFragment.newInstance(mTitlesPage[position
+						% mTitlesPage.length]);
+			else if (position == 4)
+				return AboutFragment.newInstance(mTitlesPage[position
+						% mTitlesPage.length]);
+			return null;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return mTitlesPage[position % mTitlesPage.length];
+		}
+
+		@Override
+		public int getCount() {
+			return mTitlesPage.length;
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		adView.pause();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		adView.resume();
+	}
 }

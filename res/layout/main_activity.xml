@@ -16,32 +16,25 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0" >
-            
-        <com.google.ads.AdView
-     android:id="@+id/adView"
+        android:id="@+id/adViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/admob_publisher_id"
-            ads:loadAdOnCreate="true"
-            
-            ads:testDevices = "CF95DC53F383F9A836FD749F3EF439CD" 
-            >
-
-           
-
-        </com.google.ads.AdView>
-        </LinearLayout>
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-0357007671643145/4178870797" >
+        </com.google.android.gms.ads.AdView>
+    </LinearLayout>
     <com.viewpagerindicator.TabPageIndicator
         android:id="@+id/indicator"
         android:layout_height="wrap_content"

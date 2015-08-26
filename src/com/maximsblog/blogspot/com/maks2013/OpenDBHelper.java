@@ -20,31 +20,24 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class OpenDBHelper extends SQLiteAssetHelper {
 
 	public static final String DATABASE_NAME = "catalog";
-	public static final String DATABASE_NAME2 = "catalogen";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	
 	public static final int NAME = 1;
-	public static final int NOTE = 2;
-	public static final int P = 3;
-	public static final int Z = 4;
+	public static final int Z = 2;
 
 
 	public OpenDBHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
-	public OpenDBHelper(Context context, boolean notru) 
-	{
-			super(context, DATABASE_NAME2, null, DATABASE_VERSION);
-	}
 
 	public Cursor getEmployees() {
 
 		SQLiteDatabase db = getReadableDatabase();
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-		String [] sqlSelect = {"0 _id", "name", "note", "p", "z"}; 
+		String [] sqlSelect = {"0 _id", "name", "z"}; 
 		String sqlTables = "catalog";
 
 		qb.setTables(sqlTables);

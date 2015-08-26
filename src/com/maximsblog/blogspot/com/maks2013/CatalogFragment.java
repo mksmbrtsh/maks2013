@@ -51,7 +51,7 @@ public final class CatalogFragment extends Fragment implements OnItemClickListen
         adapter = new SimpleCursorAdapter(getActivity(), 
 				android.R.layout.simple_list_item_2, 
 				mCursor, 
-				new String[] {"name", "p"}, 
+				new String[] {"name", "z"}, 
 				new int[] {android.R.id.text1, android.R.id.text2});
         mList.setAdapter(adapter);
         return layout;
@@ -67,8 +67,6 @@ public final class CatalogFragment extends Fragment implements OnItemClickListen
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 		Intent intent = new Intent(getActivity(), InfoFragment.infoActivity.class);
 		intent.putExtra("name", adapter.getCursor().getString(OpenDBHelper.NAME));
-		intent.putExtra("note", adapter.getCursor().getString(OpenDBHelper.NOTE));
-		intent.putExtra("p", adapter.getCursor().getString(OpenDBHelper.P));
 		intent.putExtra("z", adapter.getCursor().getString(OpenDBHelper.Z));
 		getActivity().startActivity(intent);
 	}
@@ -77,13 +75,12 @@ public final class CatalogFragment extends Fragment implements OnItemClickListen
 	public void onClick(View v) {
 		SQLiteDatabase db = ((MainActivity)getActivity()).mDBh.getReadableDatabase();
 		mCursor.requery();
-		mCursor = db.query(OpenDBHelper.DATABASE_NAME, new String[] {"0 _id", "name", "note", "p", "z" }, 
-				"name"+" LIKE '%"+mSearch.getText().toString().toUpperCase()+"%' OR "+
-				"p"+" LIKE '%"+mSearch.getText().toString().toUpperCase()+"%'", null, null, null, null);
+		mCursor = db.query(OpenDBHelper.DATABASE_NAME, new String[] {"0 _id", "name", "z" }, 
+				"name"+" LIKE '%"+mSearch.getText().toString().toUpperCase()+"%'", null, null, null, null);
 		adapter = new SimpleCursorAdapter(getActivity(), 
 				android.R.layout.simple_list_item_2, 
 				mCursor, 
-				new String[] {"name", "p"}, 
+				new String[] {"name", "z"}, 
 				new int[] {android.R.id.text1, android.R.id.text2});
 		mList.setAdapter(adapter);
 	}
