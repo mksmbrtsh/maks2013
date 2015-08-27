@@ -65,10 +65,7 @@ public final class CatalogFragment extends Fragment implements OnItemClickListen
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-		Intent intent = new Intent(getActivity(), InfoFragment.infoActivity.class);
-		intent.putExtra("name", adapter.getCursor().getString(OpenDBHelper.NAME));
-		intent.putExtra("z", adapter.getCursor().getString(OpenDBHelper.Z));
-		getActivity().startActivity(intent);
+		
 	}
 
 	@Override

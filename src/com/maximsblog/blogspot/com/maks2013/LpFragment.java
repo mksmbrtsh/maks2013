@@ -31,6 +31,7 @@ public class LpFragment extends Fragment implements OnClickListener {
     	LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.lp_fragment,container,false);
     	Button button = (Button) layout.findViewById(R.id.button1);
     	button.setOnClickListener(this);
+    	 ((Button) layout.findViewById(R.id.button2)).setOnClickListener(this);
         return layout;
     }
 
@@ -41,9 +42,16 @@ public class LpFragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		String url = "http://www.aviasalon.com/ru/static/page/letnaya_programma.htm";
+		if(v.getId() == R.id.button2){
+		String url = "https://vk.com/maks";
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse(url));
 		startActivity(i);
+		} else {
+			String url = "http://www.aviasalon.com/";
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
+		}
 	}
 }
