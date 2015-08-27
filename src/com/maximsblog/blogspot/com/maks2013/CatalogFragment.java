@@ -72,7 +72,7 @@ public final class CatalogFragment extends Fragment implements OnItemClickListen
 	public void onClick(View v) {
 		SQLiteDatabase db = ((MainActivity)getActivity()).mDBh.getReadableDatabase();
 		mCursor.requery();
-		mCursor = db.query(OpenDBHelper.DATABASE_NAME, new String[] {"0 _id", "name", "z" }, 
+		mCursor = db.query("catalog", new String[] {"0 _id", "name", "z" }, 
 				"name"+" LIKE '%"+mSearch.getText().toString().toUpperCase()+"%'", null, null, null, null);
 		adapter = new SimpleCursorAdapter(getActivity(), 
 				android.R.layout.simple_list_item_2, 
